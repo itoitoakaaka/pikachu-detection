@@ -1,27 +1,34 @@
 # pikachu-detection
 
-Real-time Pikachu detection using YOLOv8 trained on a custom Roboflow dataset.
+A compact computer-vision training project using YOLOv8 and a custom object-detection dataset.
+
+## Project history
+
+The original notebook / training exercise was created during my earlier Python and machine-learning training period (2023–2024). The project was subsequently reorganized and published on GitHub, so the repository history reflects later cleanup and maintenance rather than the original learning period.
 
 ## Overview
 
-This project trains a YOLOv8 object detection model to detect Pikachu characters in images. The dataset is sourced from [Roboflow Universe](https://universe.roboflow.com/gian-b0euc/pikachu-zxwjc/dataset/1) and contains labeled images of various Pikachu illustrations, toys, and screenshots. Both a Google Colab notebook (`pikachu.ipynb`) and a standalone Python script (`pikachu_train.py`) are provided.
+This project fine-tunes a pretrained YOLOv8 model to detect Pikachu instances in images. It includes both a Google Colab notebook and a standalone Python training script.
 
-## Features
+## What this project demonstrates
 
-- **Dataset Download**: Automatically downloads the Pikachu detection dataset from Roboflow.
-- **Model Training**: Fine-tunes a pre-trained YOLOv8s model on the Pikachu dataset.
-- **Inference**: Runs detection on new images and saves annotated results.
+- Python-based machine-learning workflow
+- object detection with YOLOv8
+- dataset acquisition and train / validation / test handling
+- model fine-tuning and inference
+- transition from notebook experimentation to a reusable Python script
 
 ## Dataset
 
-- **Source**: Roboflow (CC BY 4.0 license)
-- **Classes**: 1 (Pikachu)
-- **Split**: 64 train / 18 validation / 10 test images
+- Source: Roboflow Universe
+- License: CC BY 4.0
+- Classes: 1
+- Split: 64 train / 18 validation / 10 test images
 
 ## Requirements
 
 - Python 3.8+
-- ultralytics (YOLOv8)
+- ultralytics
 - roboflow
 - OpenCV
 
@@ -36,19 +43,13 @@ pip install -r requirements.txt
 ## Usage
 
 ```bash
-# 1. Download the dataset (requires Roboflow API key)
 python pikachu_train.py download --api_key YOUR_ROBOFLOW_API_KEY
-
-# 2. Train the model
 python pikachu_train.py train --data_dir Pikachu-1 --epochs 50
-
-# 3. Run inference on an image
 python pikachu_train.py predict --model runs/detect/train/weights/best.pt --image test.jpg
 ```
 
-Alternatively, open `pikachu.ipynb` in Google Colab to run the training interactively with GPU support.
+The included notebook can also be run in Google Colab.
 
-## Output
+## Portfolio note
 
-- `runs/detect/train/weights/best.pt`: Best model weights.
-- `pikachu_detection_result.jpg`: Annotated detection result image.
+This is an early computer-vision learning project rather than a research result. It is kept public to show the progression from basic object detection toward my more recent work in human movement analysis, multimodal sensing, and human-centered AI.
